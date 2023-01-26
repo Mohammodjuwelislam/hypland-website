@@ -1,3 +1,22 @@
+// poppupSearch toggle 
+const searchClossBtn = document.querySelector('.search');
+const searchPop = document.querySelector('.poppup-search-area');
+const removePop = document.querySelector('.clossSearch-Poppup');
+// searchClossBtn
+searchClossBtn.addEventListener('click', function(){
+    console.log('click searchBtn here');
+    searchPop.classList.add("active");
+});
+
+// removePop 
+removePop.addEventListener('click', function(){
+    console.log('click searchBtn here');
+    searchPop.classList.remove("active");
+});
+
+
+
+// mobile manu toggle 
 const mobileMenuToggle = document.querySelector('.mobileMenuToggle');
 const mobileMenuArea = document.querySelector('.mobile-menu-area');
 const closeToggle = document.querySelector('.closeToggle');
@@ -11,6 +30,11 @@ closeToggle.addEventListener('click', function(){
 	mobileMenuArea.classList.remove('show');
 	console.log(mobileMenuArea);
 });
+
+
+// incriment and dicriment
+const dicrimentNum = document.querySelector('.shop-qnty');
+console.log(dicrimentNum);
 
 
 

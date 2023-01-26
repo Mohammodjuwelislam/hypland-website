@@ -626,4 +626,6 @@
         width: 112px;
     }
 
+    .footer-contact-list a:hover::before{width: 0%;}
+
 }
