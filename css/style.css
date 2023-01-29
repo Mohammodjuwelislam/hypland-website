@@ -330,12 +330,9 @@ label {
 .poppup-search-form{
 	width: 100%;
 	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 30px;
 	transform: scale(0);
 	transition: .3s;
+	position: relative;
 }
 
 .poppup-search-area.active .poppup-search-form{
@@ -353,6 +350,10 @@ label {
 	padding-left: 18px;
 	color: #fff;
 	font-size: 25px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .poppup-search-form input::placeholder{
 	text-transform: uppercase;
@@ -364,45 +365,90 @@ label {
 /*------------------------------------------------------*/
 /*-------offcanvas-mobile-menu-area-css--------------
 /*------------------------------------------------------*/
-.mobile-menu-area{
+
+.offcanver-overly{
 	position: fixed;
 	top: 0;
-	left: -320px;
-	width: 320px;
-	height: 100vh;
-	background-color: #D7D7D7;
-	z-index: 99999;
-	padding: 10px 0;
-	transition: .4s;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	visibility: hidden;
+	overflow: hidden;
+	opacity: 0;
+	transition: .5s;
+	cursor: pointer;
 }
 
-.mobile-menu-area.show{
+.offcanver-overly.active{
+	visibility: visible;
+	overflow: visible;
+	opacity: 1;
+}
+
+.offcanver-mobile-content{
+	position: absolute;
+	top: 0;
+	left: -480px;
+	width: 100%;
+	max-width: 480px;
+	height: 100%;
+	background-color: #fff;
+	visibility: hidden;
+	overflow: hidden;
+	opacity: 0;
+	transition: .4s;
+}
+.offcanver-mobile-content.active{
+	visibility: visible;
+	overflow: visible;
+	opacity: 1;
 	left: 0px;
 }
 
+.mobile-menu-wrapper{
+	overflow-y: scroll;
+	max-height: 85vh;
+}
 
-.offcanvas-logo{
-	padding: 15px 30px;
+.offcanvas-logo {
+	padding: 40px 30px;
 	border-bottom: 1px solid #CCCCCC;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
-
 .offcanvas-logo .closeToggle {
 	background: transparent;
-	border: 0;
+	/* border: 0; */
+	transition: .4s;
+	border-color: none;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	border: 2px solid #fff;
+	border-radius: 100%;
+	line-height: 5px;
+}
+.offcanvas-logo .closeToggle:hover{
+	border: 2px solid #041a69;
+	border-radius: 100%;
+	transform: rotate(180deg);
 }
 
-.sinupBtn{
-	padding: 15px 30px;
+.sinupBtn {
+	padding: 35px 55px;
 	border-bottom: 1px solid #CCCCCC;
 }
-.sinupBtn p{
+.sinupBtn p {
 	font-size: 14px;
 	font-weight: 500;
-	line-height: 19px;	
+	line-height: 19px;
 	text-transform: uppercase;
 	color: #000000;
+	margin-bottom: 15px;
 }
 .sinupBtn a{
 	display: block;
@@ -417,8 +463,8 @@ label {
 	text-transform: uppercase;
 }
 
-.mobile-main-menu{
-	padding: 15px 30px;
+.mobile-main-menu {
+	padding: 35px 55px;
 	border-bottom: 1px solid #CCCCCC;
 	position: relative;
 }
@@ -427,40 +473,38 @@ label {
 	border: 0;
 }
 
+.mobile-main-menu{
+	position: relative;
+}
+
 .mobile-main-menu h5{
 	color: #000000;
 	text-transform: uppercase;
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 31px;
+	margin-bottom: 10px;
 }
 
 .mobile-main-menu ul li{
 	display: block;
 }
-.mobile-main-menu ul li a{
-	font-size: 15px;
-	font-weight: 400;
+.mobile-main-menu ul li a {
+	font-size: 16px;
+	font-weight: 500;
 	line-height: 19px;
 	text-transform: uppercase;
 	color: #000000;
-	display:block;
-	padding: 6px 0;
-	transition: .3s;
-	position: relative;
+	display: block;
+	padding: 10px 0;
 }
-
 .mobile-main-menu ul li a img{
 	float: right;
 }
 
-
-
-
-
 .mobile-menu-social-icon{
 	position: absolute;
-	bottom: 20px;
+	bottom: 45px;
 	right: 30px;
 }
 
@@ -468,7 +512,7 @@ label {
 	height: 20px;
 	width: 20px;
 	display: inline-block;
-	margin: 0 5px;
+	margin: 0 8px;
 	
 }
 
@@ -525,14 +569,14 @@ label {
 
 
 
-.header-bottom{
+.header-bottom {
 	width: 100%;
 	height: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	background-color: #fff;
-	border-bottom: 1px solid #D7D7D7;	
+	border-bottom: 1px solid #D7D7D7;
 }
 
 .logo {
@@ -809,10 +853,20 @@ label {
 
 .features-product-content{
 	text-align: center;
+	
+}
+
+.features-img{
+	overflow: hidden;
 }
 
 .features-product-content img {
 	max-width: 100%;
+	transition: .3s;
+}
+
+.features-product-content:hover img{
+	transform: scale(1.1);
 }
 
 .features-product-content h4{
@@ -911,11 +965,16 @@ label {
 	font-weight: 600;
 	line-height: 24px;
 	text-transform: uppercase;
+	transition: .3s;
 }
 
-.nav-custom-design .nav-link.active{
-	color: #3E58E6;
+.nav-custom-design .nav-link:hover {
+	color: #0e2ab3;
 }
+.nav-custom-design .nav-link.active{
+	color: #0f306f;
+}
+
 
 
 .shop-text{
@@ -1100,10 +1159,27 @@ label {
 	position: relative;
 }
 
+.shop-wrapper{
+	overflow: hidden;
+}
 .product-active .owl-item img {
     display: inline-block;
 	width: inherit;
+	
 }
+
+.shop-wrapper .shop-img img{
+	transition: .3s;
+	transform: scale(1);
+}
+.shop-wrapper:hover .shop-img img{
+	transform: scale(1.1);
+}
+
+.shop-img{
+	position: relative;
+}
+
 
 .product-active .single-item {
 	display: flex;
@@ -1536,12 +1612,12 @@ label {
 }
 
 .our-section-header-title h3 {
-	font-size: 36px;
-	font-weight: 600;
+	font-size: 30px;
+	font-weight: 900;
 	line-height: 52px;
 	text-transform: uppercase;
 	color: #000000;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 
 .our-collapps-content .our-button {
@@ -1549,8 +1625,8 @@ label {
 	background-color: transparent;
 	color: #000000;
 	text-transform: uppercase;
-	font-size: 22px;
-	font-weight: 600;
+	font-size: 20px;
+	font-weight: 400;
 	line-height: 31px;
 	display: block;
 	margin-bottom: 20px;
@@ -1572,8 +1648,8 @@ label {
 	margin-bottom: 50px;
 }
 
-.collapse-toggle-content p{
-	font-size: 16px;
+.collapse-toggle-content p {
+	font-size: 15px;
 	font-weight: 400;
 	line-height: 27px;
 	letter-spacing: 0.02em;
@@ -1846,7 +1922,6 @@ table tr td:last-child{text-align: right;}
 	border-color: 0;
 }
 
-.shop-details-content{}
 .shop-details-content h2{
 	text-transform: uppercase;
 	color: #000000;
@@ -1908,7 +1983,6 @@ table tr td:last-child{text-align: right;}
 }
 
 
-.shop-detaisl-about{}
 .shop-detaisl-about p{
 	font-size: 16px;
 	margin-bottom: 18px;

@@ -17,19 +17,33 @@ removePop.addEventListener('click', function(){
 
 
 // mobile manu toggle 
+const MenuOverly = document.querySelector('.offcanver-overly');
+const menuBar = document.querySelector('.menu_bar');
 const mobileMenuToggle = document.querySelector('.mobileMenuToggle');
-const mobileMenuArea = document.querySelector('.mobile-menu-area');
 const closeToggle = document.querySelector('.closeToggle');
+const mobile_content = document.querySelector('.offcanver-mobile-content');
 
 mobileMenuToggle.addEventListener('click', function(){
-	mobileMenuArea.classList.add('show');
-	console.log(mobileMenuArea);
+    MenuOverly.classList.add('active');
+    mobile_content.classList.add('active');
 });
 
-closeToggle.addEventListener('click', function(){
-	mobileMenuArea.classList.remove('show');
-	console.log(mobileMenuArea);
+menuBar.addEventListener('click', function(){
+    MenuOverly.classList.add('active');
+    mobile_content.classList.add('active');
 });
+
+
+closeToggle.addEventListener('click', function(){
+	MenuOverly.classList.remove('active');
+    mobile_content.classList.remove('active');
+});
+
+MenuOverly.addEventListener('click', function(){
+	MenuOverly.classList.remove('active');
+    mobile_content.classList.remove('active');
+});
+
 
 
 // incriment and dicriment
